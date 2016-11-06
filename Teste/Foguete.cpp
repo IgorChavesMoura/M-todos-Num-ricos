@@ -48,7 +48,7 @@ float Foguete :: bisseccao(float eps){
       } else {
          zr = b0;
       }
-      //cout<<"O valor " << zr << " é zero da expressão."<<endl;
+      cout<<"O valor " << zr << " é zero da expressão."<<endl;
       return 0;
    }
 
@@ -58,9 +58,9 @@ float Foguete :: bisseccao(float eps){
       tam = b0-a0;
       pm = (a0+b0)/2;
       if(f(pm) == 0) {
-         //cout<<"SOLUÇÃO EXATA ENCONTRADA!! x = "<<pm<<endl;
-         //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
-         return pm;
+         cout<<"SOLUÇÃO EXATA ENCONTRADA!! x = "<<pm<<endl;
+         cout<<"Foram necessárias "<<i<<" iterações"<<endl;
+         return 0;
       }
 
       if(f(a0)*f(pm) < 0){
@@ -71,8 +71,8 @@ float Foguete :: bisseccao(float eps){
       
    } while(tam > eps);
    
-   //cout<<"Intervalo final: ["<<a0<<","<<b0<<"]"<<endl<<"Solução aproximada: "<<((a0+b0)/2)<<endl;
-   //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
+   cout<<"Intervalo final: ["<<a0<<","<<b0<<"]"<<endl<<"Solução aproximada: "<<((a0+b0)/2)<<endl;
+   cout<<"Foram necessárias "<<i<<" iterações"<<endl;
    return (a0+b0)/2;
 }
 float Foguete :: posFalsa(float eps){
@@ -100,8 +100,8 @@ float Foguete :: posFalsa(float eps){
       } else {
          zr = b0;
       }
-      //cout<<"O valor " << zr << " é zero da expressão."<<endl;
-      return zr;
+      cout<<"O valor " << zr << " é zero da expressão."<<endl;
+      return 0;
    }
    float fa,fb;
    // Implementação do método da posição falsa
@@ -112,9 +112,9 @@ float Foguete :: posFalsa(float eps){
       tam = b0-a0;
       np = (a0*fb - b0*fa)/(fb-fa);
       if(f(np) == 0) {
-         //cout<<"SOLUÇÃO EXATA ENCONTRADA!! x = "<<np<<endl;
-         //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
-         return np;
+         cout<<"SOLUÇÃO EXATA ENCONTRADA!! x = "<<np<<endl;
+         cout<<"Foram necessárias "<<i<<" iterações"<<endl;
+         return 0;
      	 
       }
 
@@ -126,8 +126,8 @@ float Foguete :: posFalsa(float eps){
       
    } while(tam > eps);
    
-   //cout<<"Intervalo final: ["<<a0<<","<<b0<<"]"<<endl<<"Solução aproximada: "<<((a0*fb - b0*fa)/(fb-fa))<<endl;
-   //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
+   cout<<"Intervalo final: ["<<a0<<","<<b0<<"]"<<endl<<"Solução aproximada: "<<((a0*fb - b0*fa)/(fb-fa))<<endl;
+   cout<<"Foram necessárias "<<i<<" iterações"<<endl;
    return ((a0*fb - b0*fa)/(fb-fa));
 }
 float Foguete :: newtonRapshon(float eps){
@@ -148,7 +148,7 @@ float Foguete :: newtonRapshon(float eps){
 
     }
    
-   	//cout << "Raiz aproximada encontrada: " << x0 << endl;
-   	//cout << "Foram necessárias "<<i<<" iterações"<<endl;	
+   	cout << "Raiz aproximada encontrada: " << x0 << endl;
+   	cout << "Foram necessárias "<<i<<" iterações"<<endl;	
    	return x0;	
 }
