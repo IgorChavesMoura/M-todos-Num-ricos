@@ -82,10 +82,10 @@ float Foguete :: posFalsa(float eps){
    // tam: tamanho do intervlao
    // np: novo ponto
    // i: número de iterações
-   
-   float a0, b0, tam, np;
-   a0 = this->a0;
-   b0 = this->b0; 
+ 
+   float a0, b0, tam, np,a, b, c, e, f_a, f_b, f_c,erro, aux;
+   a = this->a0;
+   b = this->b0; 
    int i = 0;
    
 
@@ -94,41 +94,34 @@ float Foguete :: posFalsa(float eps){
    // Um dos extremos do intervalo é a raiz
    float zr;
 
-   if(f(a0) == 0 || f(b0) == 0)  {
-      if(f(a0)==0){
-         zr = a0;
-      } else {
-         zr = b0;
+    c=(a*f_b-b*f_a)/(f_b - f_a); ///Metodo da Posição Falsa
+    f_c=f(c);
+    erro=abs(b-a);
+    i++;
+    while(eps<=abs(f_c) and eps<=erro){
+         ///condição do loop: irá executar o procedimento abaixo enquanto o erro for maior que a precisão
+      i++;
+      if(f_a*f_c<0){
+        b=c;
       }
-      //cout<<"O valor " << zr << " é zero da expressão."<<endl;
-      return zr;
-   }
-   float fa,fb;
-   // Implementação do método da posição falsa
-   do {
-   	  i++;
-   	  fa = f(a0);
-   	  fb = f(b0);
-      tam = b0-a0;
-      np = (a0*fb - b0*fa)/(fb-fa);
-      if(f(np) == 0) {
-         //cout<<"SOLUÇÃO EXATA ENCONTRADA!! x = "<<np<<endl;
-         //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
-         return np;
-     	 
+      if(f_b*f_c<0){
+        a=c;
       }
+      erro=abs(b-a);
+      f_a=f(a);
+      f_b=f(b);
+      c=(a*f_b-b*f_a)/(f_b - f_a);
+      f_c=f(c);
 
-      if(f(a0)*f(np) < 0){
-         b0 = np; // a solução está a esquerda
-      } else{
-         a0 = np;  // a solução está a direita
-      }
-      
-   } while(tam > eps);
+
+    }
+                        
+
+                
    
    //cout<<"Intervalo final: ["<<a0<<","<<b0<<"]"<<endl<<"Solução aproximada: "<<((a0*fb - b0*fa)/(fb-fa))<<endl;
    //cout<<"Foram necessárias "<<i<<" iterações"<<endl;
-   return ((a0*fb - b0*fa)/(fb-fa));
+   return c;
 }
 float Foguete :: newtonRapshon(float eps){
 
